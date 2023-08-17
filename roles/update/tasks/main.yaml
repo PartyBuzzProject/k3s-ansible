@@ -1,0 +1,27 @@
+---
+
+- name: Update cache
+  apt:
+    update_cache: yes
+
+- name: Upgrade packages
+  apt:
+    upgrade: dist
+    force_apt_get: yes
+    autoremove: yes
+    autoclean: yes
+
+- name: Reboot the nodes (and Wait upto 5 mins max)
+  become: true
+  reboot:
+    reboot_timeout: 300
+
+- name: Wait for server to restart
+  wait_for_connection:
+    delay: 5
+    timeout: 300
+
+- name: Ensure pip is installed
+  package:
+    name: python3-pip
+    state: present
