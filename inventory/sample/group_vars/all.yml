@@ -8,7 +8,8 @@ systemd_dir: /etc/systemd/system
 system_timezone: "Europe/Zurich"
 
 # interface which will be used for flannel
-flannel_iface: "enp7s0"
+#flannel_iface: "enp7s0"
+flannel_iface: "eth0"
 
 # apiserver_endpoint is virtual ip-address which will be configured on each master
 apiserver_endpoint: "192.168.30.222"
